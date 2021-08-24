@@ -13,12 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['prefix' => 'admin'], function () {
+    Auth::routes();
+});
+
 Route::get('/admin/{any?}', function () {
     return view('welcome');
 })->middleware('auth');
 
-Route::fallback(function(){ return response()->view('welcome'); });
+//Route::fallback(function(){ return response()->view('welcome'); });
 
-Auth::routes();
+Route::get('{any?}', function () {
+    return view('welcome');
+})->where('any', '.*');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
