@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+Use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//  Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
-    Auth::routes();
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 Route::get('/admin/{any?}', function () {
     return view('welcome');
 })->middleware('auth');
 
-//Route::fallback(function(){ return response()->view('welcome'); });
+// Route::fallback(function(){ return response()->view('welcome'); });
 
 Route::get('{any?}', function () {
     return view('welcome');
-})->where('any', '.*');
+});
+//->where('any', '.*');
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

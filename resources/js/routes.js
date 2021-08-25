@@ -6,6 +6,7 @@ import AddProduct from './screens/admin/product/AddProduct'
 import Products from './screens/admin/product/Products'
 import EditProduct from './screens/admin/product/EditProduct'
 import HomePage from './screens/client/HomePage'
+import Login from './screens/auth/Login'
 
 export default {
     mode:'history',
@@ -52,6 +53,12 @@ export default {
         {
             path: '/home',
             component: HomePage
+        },
+
+        {
+            path: '/login',
+            component: Login,
+            name: 'Login'
         }
     ]
 }
