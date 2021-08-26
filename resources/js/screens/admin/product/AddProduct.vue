@@ -6,18 +6,17 @@
     <v-text-field
       :counter="35"
       label="Name"
-      required
       dark
       v-model="name"
     ></v-text-field>
 
 
-        <v-textarea
-        dark
-          name="Description"
-          label="Enter Description..."
-          v-model="description"
-        ></v-textarea>
+    <v-textarea
+    dark
+      name="Description"
+      label="Enter Description..."
+      v-model="description"
+    ></v-textarea>
 
     <v-text-field
       label="Price"
@@ -25,6 +24,17 @@
       dark
       v-model="price"
     ></v-text-field>
+
+    <v-select
+      v-model="category"
+      return-object
+      :items="categories"
+      item-text="name"
+      label="Category"
+      dark
+      dense
+      outlined
+    ></v-select>
 
     <v-row class="mb-2">
         <font-awesome-icon icon="camera" class="white--text mt-4 ml-2" style="font-size:30px;margin-right=-20px" />
@@ -55,7 +65,9 @@ export default {
             name: '',
             price: '',
             image: '',
-            description: ''
+            description: '',
+            categories: [],
+            category: ''
         };
     },
 
@@ -68,13 +80,30 @@ export default {
             formData.append('price', this.price);
             formData.append('image', this.image);
             formData.append('description', this.description);
+            formData.append('category_id', this.category.id);
 
-            axios.post('http://127.0.0.1:8000/api/add/product', formData).then(response => {
+            axios.post('api/add/product', formData).then(response => {
                 if (response.status >= 200 && response.status < 300) {
                     this.$router.push('products')
                 }
             });
+        },
+
+        getCategories() {
+          axios.get('api/categories').then(response => {
+            if(response.status >= 200 && response.status < 300) {
+              var categoryArray = [];
+              response.data.categories.map(category => {
+                categoryArray.push({name: category.name, id: category.id})
+              })
+              this.categories = categoryArray
+            }
+          });
         }
+    },
+
+    mounted() {
+      this.getCategories();
     }
 }
 </script>

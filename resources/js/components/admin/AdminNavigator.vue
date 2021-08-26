@@ -33,7 +33,7 @@ import EventBus from '../../eventbus';
 export default {
   methods: {
     logout() {
-      axios.post('http://127.0.0.1:8000/admin/logout').then(response => {
+      axios.post('admin/logout').then(response => {
         if(response.status >= 200 && response.status < 300) {
           EventBus.$emit('authCheck')
           this.$router.push({name: 'Login'})

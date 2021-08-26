@@ -10,6 +10,9 @@
             Name
           </th>
           <th class="text-center">
+            Category Name
+          </th>
+          <th class="text-center">
             Price
           </th>
           <th class="text-center">
@@ -31,6 +34,7 @@
             </div>
           </td>
           <td class="text-center">{{ product.name }}</td>
+          <td class="text-center">{{ product.category.name }}</td>
           <td class="text-center">{{ product.price }}</td>
           <td class="text-center">
             <v-btn
@@ -73,7 +77,7 @@ export default {
 
     methods: {
         getProducts () {
-            axios.get('http://localhost:8000/api/products').then(response => {
+            axios.get('api/products').then(response => {
                 if(response.status >= 200 && response.status < 300) {
                     this.products = response.data.products
                 }
@@ -81,7 +85,7 @@ export default {
         },
 
         deleteProduct(id) {
-            axios.get('http://localhost:8000/api/delete/product/'+id).then(response => {
+            axios.get('api/delete/product/'+id).then(response => {
                 if(response.status >= 200 && response.status < 300) {
                     this.getProducts()
                     alert(response.data.message)

@@ -58,7 +58,7 @@
             formData.append('name', this.name);
             formData.append('order', this.order);
             formData.append('image', this.image);
-              axios.post('http://127.0.0.1:8000/api/add/category', formData).then(response => {
+              axios.post('api/add/category', formData).then(response => {
                   if(response.status >= 200 && response.status < 300) {
                     this.$router.push('categories')
                   }

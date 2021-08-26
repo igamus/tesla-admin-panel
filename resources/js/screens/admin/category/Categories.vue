@@ -72,7 +72,7 @@
     },
     methods: {
         getCategories() {
-            axios.get('http://localhost:8000/api/categories').then(response => {
+            axios.get('api/categories').then(response => {
                 if(response.status >= 200 && response.status < 300) {
                     this.categories = response.data.categories
                 }
@@ -80,7 +80,7 @@
         },
 
         deleteCategory(id) {
-          axios.get('http://localhost:8000/api/delete/category/'+id).then(response => {
+          axios.get('api/delete/category/'+id).then(response => {
             if(response.status >= 200 && response.status < 300) {
               alert(response.data.message)
               this.getCategories()
