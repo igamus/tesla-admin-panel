@@ -14,11 +14,12 @@ Use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-//  Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
+
+// Auth::routes();
 
 Route::get('/admin/{any?}', function () {
     return view('welcome');
@@ -31,4 +32,4 @@ Route::get('{any?}', function () {
 });
 //->where('any', '.*');
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
