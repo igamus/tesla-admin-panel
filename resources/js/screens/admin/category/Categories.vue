@@ -24,10 +24,10 @@
         <tr v-for="category in categories" :key="category.id">
           <td class="text-center">
             <div v-if="category.image">
-              <img :src="url+'/categories/'+category.image" style="height:100px;width=100px" alt="">
+              <img :src="url+'/categories/'+category.image" style="height:100px; width:100px" alt="">
             </div>
             <div v-else>
-              <img class="pt-2" src="https://storage.googleapis.com/webdesignledger.pub.network/WDL/12f213e1-t1.jpg" style="height:100px;width:100px" alt="">
+              <img class="pt-2" src="https://storage.googleapis.com/webdesignledger.pub.network/WDL/12f213e1-t1.jpg" style="height:100px; width:100px" alt="">
             </div>
           </td>
           <td class="text-center">{{ category.name }}</td>

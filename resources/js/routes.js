@@ -8,6 +8,7 @@ import EditProduct from './screens/admin/product/EditProduct'
 import HomePage from './screens/client/HomePage'
 import Login from './screens/auth/Login'
 import Shop from './screens/client/shop/Shop'
+import ProductDetails from './screens/client/shop/ProductDetails'
 
 export default {
     mode:'history',
@@ -66,6 +67,13 @@ export default {
             path: '/shop',
             component: Shop,
             name: 'Shop'
+        },
+
+        {
+            path: '/shop/productDetails',
+            component: ProductDetails,
+            props: true,
+            name: 'ProductDetails'
         }
     ]
 }

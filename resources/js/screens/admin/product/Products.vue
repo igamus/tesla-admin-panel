@@ -27,7 +27,7 @@
         <tr v-for="product in products" :key="product.id">
           <td class="text-center">
             <div v-if="product.image">
-              <img :src="url+'/products/'+product.image" style="height:100px;width=100px" alt="">
+              <img :src="url+'/products/'+product.image" style="height:100px;width:100px" alt="">
             </div>
             <div v-else>
               <img class="pt-2" src="https://storage.googleapis.com/webdesignledger.pub.network/WDL/12f213e1-t1.jpg" style="height:100px;width:100px" alt="something's wrong">
