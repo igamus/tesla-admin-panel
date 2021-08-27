@@ -40,7 +40,7 @@
                     >
                         <h1 class="text-center font-size">{{ category.name }}</h1>
                         <div class="text-center">
-                            <v-btn href="" class="white--text" outlined>View Products</v-btn>
+                            <v-btn @click="() => navigateToCategoryScreen(category)" class="white--text" outlined>View Products</v-btn>
                         </div>
                     </v-img>
                 </v-card>
@@ -58,7 +58,7 @@
                     >
                     <h1 class="text-center font-size">{{ category.name }}</h1>
                     <div class="text-center">
-                        <v-btn href="" class="white--text" outlined>View Products</v-btn>
+                        <v-btn @click="() => navigateToCategoryScreen(category)" class="white--text" outlined>View Products</v-btn>
                     </div>
                     </v-img>
                 </v-card>
@@ -116,9 +116,9 @@ export default {
         getCategories () {
             axios.get('api/categories').then(response => {
                 if (response.status >= 200 && response.status < 300) {
-                    this.categories = response.data.categories
+                    this.categories = response.data.categories;
                 }
-            })
+            });
         },
 
         getLatestProducts() {
@@ -126,7 +126,11 @@ export default {
                 if (response.status >= 200 && response.status < 300) {
                     this.products = response.data.products;
                 }
-            })
+            });
+        },
+
+        navigateToCategoryScreen(category) {
+            this.$router.push({name: 'CategoryProducts', query: {category}});
         }
     },
 
