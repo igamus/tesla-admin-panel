@@ -29,6 +29,7 @@
 
                         <v-btn
                             class="primary white--text"
+                            @click="() => addItemToCart(product)"
                             outlined
                             tile
                             dense
@@ -109,6 +110,11 @@ export default {
                     this.products = response.data.products
                 }
             })
+        },
+
+        addItemToCart(product) {
+            this.$store.dispatch('addItemToCart', product)
+            console.log(this.$store.getters.getCartItems)
         }
     },
 
