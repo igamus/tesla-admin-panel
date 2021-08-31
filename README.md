@@ -1,3 +1,31 @@
+# Tesla SPA
+
+## To Run
+
+1. Clone the repository.
+
+2. `cd` into the project directory, and run `composer install`
+
+3. Create a database 
+
+3. Copy `.env.example`, and rename it `.env`. Link the database by adding and updating the details
+
+   The project presumes that the server and port is 127.0.0.1:8000. If these will change, this `.env` document will need to be updated. Such changes would also require updating the base URL (`axios.defaults.baseURL = 'http://127.0.0.1:8000/'`) in the `bootstrap.js` document located in the `resources\js` directory with the new information. 
+
+4. Run `php artisan key:generate`
+
+5. Run `npm install`
+
+6. Run the migrations: `php artisan migrate`
+
+7. Run `php artisan serve`
+
+8. While serving the site, run `npm run watch`
+
+The project should now run and be viewed at "http://127.0.0.1:8000/" (or at a new URL that required updating the project as described in Step 3). 
+
+# laravel
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -61,5 +89,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# tesla-admin-panel
-# tesla-admin-panel
